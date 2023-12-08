@@ -1,9 +1,10 @@
 import pygame as pg
 
+explosion_image = pg.image.load('Images/Взрыв.png')
 class Explosion(pg.sprite.Sprite):
-    def __init__(self, image, size, center):
+    def __init__(self, size, center):
         pg.sprite.Sprite.__init__(self)
-        self.image = pg.transform.scale(image, [size, size])
+        self.image = pg.transform.scale(explosion_image, [size, size])
         self.rect = self.image.get_rect()
         self.rect.center = center
         self.last_update = pg.time.get_ticks()

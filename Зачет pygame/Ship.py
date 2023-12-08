@@ -1,12 +1,14 @@
 import pygame as pg
 import math
 
+ship_image = pg.image.load('Images/Корабль.png')
+ship_with_fire_image = pg.image.load('Images/Корабль с огнем.png')
 
-class Player(pg.sprite.Sprite):
-    def __init__(self, x, y, image, image_with_fire, field_size):
+class Ship(pg.sprite.Sprite):
+    def __init__(self, x, y, field_size):
         pg.sprite.Sprite.__init__(self)
-        self.image_orig = pg.transform.scale(image, [60, 60])
-        self.image_orig_fly = pg.transform.scale(image_with_fire, [50, 50])
+        self.image_orig = pg.transform.scale(ship_image, [60, 60])
+        self.image_orig_fly = pg.transform.scale(ship_with_fire_image, [50, 50])
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
         self.WIDTH = field_size[0]

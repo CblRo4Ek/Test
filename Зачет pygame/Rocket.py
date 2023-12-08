@@ -1,12 +1,14 @@
 import pygame as pg
 import math
 
+rocket_image = pg.image.load('Images/Ракета.png')
+
 class Rocket(pg.sprite.Sprite):
-    def __init__(self, image, center, corner):
+    def __init__(self, center, corner):
         pg.sprite.Sprite.__init__(self)
         self.corner = corner
         self.speed = 17
-        self.image = pg.transform.scale(image, [32, 32])
+        self.image = pg.transform.scale(rocket_image, [32, 32])
         new_image = pg.transform.rotate(self.image, self.corner)
         self.image = new_image
         self.rect = self.image.get_rect()

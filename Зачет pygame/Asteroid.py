@@ -1,19 +1,21 @@
 import pygame as pg
 import random
 
+asteroid_image = pg.image.load('Images/Астероид.png')
+asteroid_transparent_image = pg.image.load('Images/Астероид полупрозрачный.png')
 class Asteroid(pg.sprite.Sprite):
-    def __init__(self, type_asteroid, image_orig, image_transparent, field_size):
+    def __init__(self, type_asteroid, field_size, ship_center):
         pg.sprite.Sprite.__init__(self)
         self.size = random.randint(45, 80)
         self.type_asteroid = type_asteroid
-        self.image_orig = pg.transform.scale(image_orig, [self.size, self.size])
-        self.image_transparent = pg.transform.scale(image_transparent, [self.size, self.size])
+        self.image_orig = pg.transform.scale(asteroid_image, [self.size, self.size])
+        self.image_transparent = pg.transform.scale(asteroid_transparent_image, [self.size, self.size])
         self.image = self.image_orig.copy()
         self.rect = self.image.get_rect()
         self.WIDTH = field_size[0]
         self.HEIGHT = field_size[1]
-        self.rect.x = random.randint(0, self.WIDTH - self.rect.width)
-        self.rect.y = random.randint(0, self.HEIGHT - self.rect.height)
+        self.rect.x = random.choice([i for i in range(0, self.WIDTH - self.rect.width) if abs(i - ship_center[0]) > 150])
+        self.rect.y = random.choice([i for i in range(0, self.HEIGHT - self.rect.height) if abs(i - ship_center[1]) > 150])
         self.corner = 0
         self.radius = 15
         self.speed = random.choice([i for i in range(-5, 5) if i != 0])

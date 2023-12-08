@@ -2,7 +2,7 @@ import pygame as pg
 import sys
 from Asteroid import *
 from Explosion import *
-from Player import *
+from Ship import *
 from Rocket import *
 
 
@@ -13,15 +13,6 @@ pg.init()
 screen = pg.display.set_mode((WIDTH, HEIGHT))
 pg.display.set_caption('RiceRocks')
 clock = pg.time.Clock()
-
-
-# Загрузка графики
-asteroid_image = pg.image.load('Images/Астероид.png')
-asteroid_transparent_image = pg.image.load('Images/Астероид полупрозрачный.png')
-ship_image = pg.image.load('Images/Корабль.png')
-rocket_image = pg.image.load('Images/Ракета.png')
-ship_with_fire_image = pg.image.load('Images/Корабль с огнем.png')
-explosion_image = pg.image.load('Images/Взрыв.png')
 
 # Установка фона
 sky_image = pg.image.load('Images/Небо.png')
